@@ -16,7 +16,7 @@ class ValueFactory
      */
     public static function create($value, $type = null)
     {
-        $typecasted = static::typecast($value, $type);
+        $typecasted = is_null($value) ? null : static::typecast($value, $type);
 
         if($typecasted == ValueInterface::INFINITE) {
             return new Infinite();
