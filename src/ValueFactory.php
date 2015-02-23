@@ -135,4 +135,23 @@ class ValueFactory
 
         return $value;
     }
+
+    /**
+     * Recursively typecast an array of values.
+     *
+     * @param array $values
+     * @return array
+     */
+    public static function typecastArray(Array $values)
+    {
+        $typecasted = [];
+
+        foreach($values as $key => $value) {
+            $typecasted[$key] = is_array($value)
+                ? static::typecastArray($value)
+                : static::typecast($value);
+        }
+
+        return $typecasted;
+    }
 }
