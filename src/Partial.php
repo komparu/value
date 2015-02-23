@@ -5,7 +5,7 @@ namespace Komparu\Value;
 class Partial
 {
     /**
-     * @var
+     * @var ValueInterface
      */
     protected $value;
 
@@ -20,7 +20,7 @@ class Partial
     protected $right;
 
     /**
-     * @param $value
+     * @param ValueInterface $value
      * @param $left
      * @param $right
      */
@@ -48,7 +48,7 @@ class Partial
     }
 
     /**
-     * @return mixed
+     * @return ValueInterface
      */
     public function value()
     {

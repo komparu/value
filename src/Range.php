@@ -11,27 +11,27 @@
 class Range
 {
     /**
-     * @var
+     * @var ValueInterface
      */
     protected $min;
 
     /**
-     * @var
+     * @var ValueInterface
      */
     protected $max;
 
     /**
-     * @param $min
-     * @param $max
+     * @param ValueInterface $min
+     * @param ValueInterface $max
      */
-    public function __construct($min, $max)
+    public function __construct(ValueInterface $min, ValueInterface $max)
     {
         $this->min = $min;
         $this->max = $max;
     }
 
     /**
-     * @return int|float
+     * @return ValueInterface
      */
     public function min()
     {
@@ -39,7 +39,7 @@ class Range
     }
 
     /**
-     * @return int|float
+     * @return ValueInterface
      */
     public function max()
     {

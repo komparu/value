@@ -1,7 +1,5 @@
 <?php namespace Komparu\Value;
 
-use Komparu\Document\Contract\Value;
-
 /**
  * Class ValueFactory
  *
@@ -12,6 +10,23 @@ use Komparu\Document\Contract\Value;
 class ValueFactory
 {
     /**
+     * @param mixed $value
+     * @return ValueInterface
+     */
+    public static function create($value)
+    {
+        $typecasted = static::typecast($value);
+
+        if($typecasted == ValueInterface::INFINITE) {
+            return new Infinite();
+        }
+        if($typecasted == -ValueInterface::INFINITE) {
+            return new NegativeInfinite();
+        }
+
+        return new Value($typecasted);
+    }
+    /**
      * Convert a string value to a useful value object.
      *
      * @param string $value
@@ -19,15 +34,14 @@ class ValueFactory
      */
     public static function fromString($value)
     {
-        if ($operator = static::operator($value)) {
-            return $operator;
-        } elseif ($range = static::range($value)) {
+        if ($range = static::range($value)) {
             return $range;
         } elseif ($partial = static::partial($value)) {
             return $partial;
         }
-
-        return new Operator(static::typecast($value));
+        elseif ($operator = static::operator($value)) {
+            return $operator;
+        }
     }
 
     /**
@@ -40,9 +54,11 @@ class ValueFactory
     {
         preg_match('/([<|<=|>|>=]{1,2})([a-zA-Z0-9]+)/', $value, $matches);
 
-        if (!$matches) return;
+        $raw = $matches ? $matches[2] : $value;
+        $value = static::create($raw);
+        $operator = $matches ? $matches[1] : Operator::EQUALS;
 
-        return new Operator(static::typecast($matches[2]), $matches[1]);
+        return new Operator($value, $operator);
     }
 
     /**
@@ -57,7 +73,10 @@ class ValueFactory
 
         if (!$matches) return;
 
-        return new Range(static::typecast($matches[1]), static::typecast($matches[2]));
+        $min = static::create($matches[1]);
+        $max = static::create($matches[2]);
+
+        return new Range($min, $max);
     }
 
     /**
@@ -71,7 +90,11 @@ class ValueFactory
         if(!$matches) return;
         if($matches[1] != '~' and $matches[3] != '~') return;
 
-        return new Partial($matches[2], $matches[1] == '~', $matches[3] == '~');
+        $value = static::create($matches[2]);
+        $left = $matches[1] == '~';
+        $right = $matches[3] == '~';
+
+        return new Partial($value, $left, $right);
     }
 
     /**

@@ -14,7 +14,7 @@ class Operator
     const LOWER_THAN_OR_EQUALS      = '<=';
 
     /**
-     * @var mixed
+     * @var ValueInterface
      */
     protected $value;
 
@@ -34,7 +34,7 @@ class Operator
     }
 
     /**
-     * @return mixed
+     * @return ValueInterface
      */
     public function value()
     {
