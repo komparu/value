@@ -3,6 +3,21 @@
 interface ValueInterface
 {
     /**
+     * List of available types.
+     * These are the basic types a value can have.
+     */
+    const TYPE_STRING   = 'string';
+    const TYPE_TEXT     = 'text';
+    const TYPE_INTEGER  = 'int';
+    const TYPE_BOOLEAN  = 'bool';
+    const TYPE_OBJECT   = 'object';
+    const TYPE_FLOAT    = 'float';
+    const TYPE_DECIMAL  = 'decimal';
+    const TYPE_ARRAY    = 'array';
+    const TYPE_DATE     = 'date';
+    const TYPE_DATETIME = 'datetime';
+
+    /**
      * Use this number to indicate that a value
      * is of type Infinite.
      */
