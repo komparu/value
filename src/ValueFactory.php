@@ -11,11 +11,12 @@ class ValueFactory
 {
     /**
      * @param mixed $value
+     * @param string $type
      * @return ValueInterface
      */
-    public static function create($value)
+    public static function create($value, $type = null)
     {
-        $typecasted = static::typecast($value);
+        $typecasted = static::typecast($value, $type);
 
         if($typecasted == ValueInterface::INFINITE) {
             return new Infinite();
