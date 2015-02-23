@@ -25,8 +25,9 @@ class ValueFactory
             return new NegativeInfinite();
         }
 
-        return new Value($typecasted);
+        return new Value($typecasted, $type);
     }
+
     /**
      * Convert a string value to a useful value object.
      *

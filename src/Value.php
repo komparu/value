@@ -3,6 +3,16 @@
 class Value implements ValueInterface
 {
     /**
+     * @param        $data
+     * @param string $type
+     */
+    public function __construct($data = null, $type = null)
+    {
+        $this->data = $data;
+        $this->type = $type ?: gettype($data);
+    }
+
+    /**
      * @var string
      */
     protected $type;
