@@ -63,6 +63,6 @@ class Value implements ValueInterface
      */
     public function display()
     {
-        return $this->data();
+        return $this->raw();
     }
 }
