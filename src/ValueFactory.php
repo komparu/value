@@ -38,11 +38,11 @@ class ValueFactory
      */
     public static function operator($value)
     {
-        preg_match('/([<|<=|>|>=]{1})([a-zA-Z0-9]+)/', $value, $matches);
+        preg_match('/([<|<=|>|>=]{1,2})([a-zA-Z0-9]+)/', $value, $matches);
 
         if (!$matches) return;
 
-        return new Operator(static::typecast($matches[1]), $matches[0]);
+        return new Operator(static::typecast($matches[2]), $matches[1]);
     }
 
     /**
@@ -57,7 +57,7 @@ class ValueFactory
 
         if (!$matches) return;
 
-        return new Range($value, static::typecast($matches[1]), static::typecast($matches[2]));
+        return new Range(static::typecast($matches[1]), static::typecast($matches[2]));
     }
 
     /**
@@ -67,12 +67,11 @@ class ValueFactory
     public static function partial($value)
     {
         preg_match('/(~?)([a-zA-Z0-9]+)(~?)/', $value, $matches);
-        if ($matches and ($matches[1] == '~' or $matches[3] == '~')) {
-            return new Partial($matches[2], $matches[1] == '~', $matches[3] == '~');
-        } else {
-            return null;
-        }
 
+        if(!$matches) return;
+        if($matches[1] != '~' and $matches[3] != '~') return;
+
+        return new Partial($matches[2], $matches[1] == '~', $matches[3] == '~');
     }
 
     /**
