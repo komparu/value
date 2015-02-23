@@ -35,7 +35,7 @@ interface ValueInterface
      *
      * @return mixed
      */
-    public function data();
+    public function raw();
 
     /**
      * Get the data when to be displayed.

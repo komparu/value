@@ -39,9 +39,11 @@ class Value implements ValueInterface
     }
 
     /**
+     * Get the actual data of this value.
+     *
      * @return mixed
      */
-    public function data()
+    public function raw()
     {
         return $this->data;
     }
