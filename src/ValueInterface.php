@@ -20,8 +20,13 @@ interface ValueInterface
     /**
      * Use this number to indicate that a value
      * is of type Infinite.
+     *
+     * This is the maximum 32 bit notation which
+     * internally stays an integer. Any number
+     * higher than this will result in a float.
+     * And that would cause strange behaviour.
      */
-    const INFINITE = 999999999999;
+    const INFINITE = 999999999;
 
     /**
      * Get the value type.
