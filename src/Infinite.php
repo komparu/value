@@ -3,7 +3,7 @@
 class Infinite extends Value
 {
     protected $type = self::TYPE_INTEGER;
-    protected $value = 999999999999;
+    protected $value = self::INFINITE;
 
     /**
      * Get the data when to be displayed.

@@ -3,7 +3,14 @@
 class NegativeInfinite extends Value
 {
     protected $type = self::TYPE_INTEGER;
-    protected $value = -999999999999;
+
+    /**
+     * @return int
+     */
+    public function raw()
+    {
+        return - static::INFINITE;
+    }
 
     /**
      * Get the data when to be displayed.
