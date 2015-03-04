@@ -2,7 +2,7 @@
 
 namespace Komparu\Value;
 
-class Partial
+class Partial implements Statement
 {
     /**
      * @var ValueInterface

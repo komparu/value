@@ -8,7 +8,7 @@
  *
  * @package Komparu\Value
  */
-class In
+class In implements Statement
 {
     /**
      * @var ValueInterface[]

@@ -5,7 +5,7 @@
  *
  * @package Komparu\Value
  */
-class Operator
+class Operator implements Statement
 {
     const EQUALS                    = '=';
     const GREATER_THAN              = '>';

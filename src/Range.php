@@ -8,7 +8,7 @@
  *
  * @package Komparu\Value
  */
-class Range
+class Range implements Statement
 {
     /**
      * @var ValueInterface
