@@ -48,7 +48,7 @@ class ValueFactory
      * @param string $value
      * @return mixed
      */
-    public static function operatorFromString($value)
+    public static function statementFromString($value)
     {
         if ($range = static::range($value)) {
             return $range;
@@ -66,15 +66,15 @@ class ValueFactory
      * @param array $values
      * @return array
      */
-    public static function operatorFromArray(Array $values)
+    public static function statementFromArray(Array $values)
     {
         $converted = [];
 
         foreach($values as $key => $value) {
 
             $converted[$key] = is_array($value)
-                ? static::operatorFromArray($value)
-                : static::operatorFromString($value);
+                ? static::statementFromArray($value)
+                : static::statementFromString($value);
         }
 
         return $converted;
