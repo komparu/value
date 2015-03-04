@@ -29,12 +29,26 @@ class ValueFactory
     }
 
     /**
+     * @param array $values
+     * @return array
+     */
+    public static function createFromArray(Array $values)
+    {
+        $converted = [];
+        foreach($values as $key => $value) {
+            $converted[$key] = static::create($value);
+        }
+
+        return $converted;
+    }
+
+    /**
      * Convert a string value to a useful value object.
      *
      * @param string $value
      * @return mixed
      */
-    public static function fromString($value)
+    public static function operatorFromString($value)
     {
         if ($range = static::range($value)) {
             return $range;
@@ -52,16 +66,15 @@ class ValueFactory
      * @param array $values
      * @return array
      */
-    public static function fromArray(Array $values)
+    public static function operatorFromArray(Array $values)
     {
         $converted = [];
 
         foreach($values as $key => $value) {
 
             $converted[$key] = is_array($value)
-                ? static::fromArray($value)
-                : static::fromString($value);
-
+                ? static::operatorFromArray($value)
+                : static::operatorFromString($value);
         }
 
         return $converted;
@@ -71,12 +84,12 @@ class ValueFactory
      * @param $value
      * @return In|void
      */
-    public static function in($value)
+    protected static function in($value)
     {
         if(!strstr($value, ',')) return;
 
         $values = explode(',', $value);
-        $converted = static::fromArray($values);
+        $converted = static::createFromArray($values);
 
         return new In($converted);
     }
@@ -87,7 +100,7 @@ class ValueFactory
      * @param string $value
      * @return Operator|null
      */
-    public static function operator($value)
+    protected static function operator($value)
     {
         preg_match('/([<|<=|>|>=]{1,2})([a-zA-Z0-9]+)/', $value, $matches);
 
@@ -104,7 +117,7 @@ class ValueFactory
      * @param string $value
      * @return Range|null
      */
-    public static function range($value)
+    protected static function range($value)
     {
         preg_match('/([a-zA-Z0-9]+)\~([a-zA-Z0-9]+)/', $value, $matches);
 
@@ -120,7 +133,7 @@ class ValueFactory
      * @param $value
      * @return Partial|null
      */
-    public static function partial($value)
+    protected static function partial($value)
     {
         preg_match('/(~?)([a-zA-Z0-9]+)(~?)/', $value, $matches);
 
