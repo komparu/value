@@ -41,4 +41,17 @@ class In
         return $this->values;
     }
 
+    /**
+     * @return array
+     */
+    public function rawValues()
+    {
+        $raw = [];
+        foreach($this->values() as $value) {
+            $raw[] = $value->raw();
+        }
+
+        return $raw;
+    }
+
 }
