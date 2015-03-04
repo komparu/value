@@ -40,10 +40,45 @@ class ValueFactory
             return $range;
         } elseif ($partial = static::partial($value)) {
             return $partial;
+        } elseif ($in = static::in($value)) {
+            return $in;
         }
         elseif ($operator = static::operator($value)) {
             return $operator;
         }
+    }
+
+    /**
+     * @param array $values
+     * @return array
+     */
+    public static function fromArray(Array $values)
+    {
+        $converted = [];
+
+        foreach($values as $key => $value) {
+
+            $converted[$key] = is_array($value)
+                ? static::fromArray($value)
+                : static::fromString($value);
+
+        }
+
+        return $converted;
+    }
+
+    /**
+     * @param $value
+     * @return In|void
+     */
+    public static function in($value)
+    {
+        if(!strstr($value, ',')) return;
+
+        $values = explode(',', $value);
+        $converted = static::fromArray($values);
+
+        return new In($converted);
     }
 
     /**
