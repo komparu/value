@@ -122,6 +122,8 @@ class ValueFactory
      */
     protected static function range($value)
     {
+        if(!is_string($value)) return;
+
         preg_match('/([a-zA-Z0-9]+)\~([a-zA-Z0-9]+)/', $value, $matches);
 
         if (!$matches) return;
@@ -138,6 +140,8 @@ class ValueFactory
      */
     protected static function partial($value)
     {
+        if(!is_string($value)) return;
+
         preg_match('/(~?)([a-zA-Z0-9]+)(~?)/', $value, $matches);
 
         if(!$matches) return;
