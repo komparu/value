@@ -90,6 +90,8 @@ class ValueFactory
 
         if(is_string($value)) {
             $values = explode(',', $value);
+        } else {
+            $values = $value;
         }
 
         $converted = static::createFromArray($values);
