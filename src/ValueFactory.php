@@ -86,9 +86,12 @@ class ValueFactory
      */
     protected static function in($value)
     {
-        if(!strstr($value, ',')) return;
+        if(is_string($value) && !strstr($value, ',')) return;
 
-        $values = explode(',', $value);
+        if(is_string($value)) {
+            $values = explode(',', $value);
+        }
+
         $converted = static::createFromArray($values);
 
         return new In($converted);
