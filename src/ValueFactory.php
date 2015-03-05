@@ -89,12 +89,10 @@ class ValueFactory
         if(is_string($value) && !strstr($value, ',')) return;
 
         if(is_string($value)) {
-            $values = explode(',', $value);
-        } else {
-            $values = $value;
+            $value = explode(',', $value);
         }
 
-        $converted = static::createFromArray($values);
+        $converted = static::createFromArray($value);
 
         return new In($converted);
     }
