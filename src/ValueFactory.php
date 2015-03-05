@@ -18,10 +18,10 @@ class ValueFactory
     {
         $typecasted = is_null($value) ? null : static::typecast($value, $type);
 
-        if($typecasted == ValueInterface::INFINITE) {
+        if($typecasted === ValueInterface::INFINITE) {
             return new Infinite();
         }
-        if($typecasted == -ValueInterface::INFINITE) {
+        if($typecasted === -ValueInterface::INFINITE) {
             return new NegativeInfinite();
         }
 
