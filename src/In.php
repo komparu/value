@@ -54,4 +54,15 @@ class In implements Statement
         return $raw;
     }
 
+    /**
+     * Get a string representation of the raw values.
+     *
+     * @param string $separator
+     * @return string
+     */
+    public function rawValuesAsString($separator = ',')
+    {
+        return implode($separator, $this->rawValues());
+    }
+
 }
