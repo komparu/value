@@ -16,14 +16,14 @@ class ValueFactory
      */
     public static function create($value, $type = null)
     {
-        $typecasted = is_null($value) ? null : static::typecast($value, $type);
-
-        if($typecasted === ValueInterface::INFINITE) {
+        if((int) $value === ValueInterface::INFINITE) {
             return new Infinite();
         }
-        if($typecasted === -ValueInterface::INFINITE) {
+        if((int) $value === -ValueInterface::INFINITE) {
             return new NegativeInfinite();
         }
+
+        $typecasted = is_null($value) ? null : static::typecast($value, $type);
 
         return new Value($typecasted, $type);
     }
@@ -51,9 +51,27 @@ class ValueFactory
      */
     public static function typecast($value, $type = null)
     {
+        switch($value) {
+
+            case '++inf':
+            case '∞':
+            case '+∞':
+            case '&infin;':
+            case '+&infin;':
+                return ValueInterface::INFINITE;
+
+            case '--inf':
+            case '-∞':
+            case '-&infin;':
+                return -ValueInterface::INFINITE;
+        }
+
         switch($type) {
 
             case 'int':
+                if($value === 'inf') return ValueInterface::INFINITE;
+                if($value === '-inf') return -ValueInterface::INFINITE;
+
                 return (int) $value;
 
             case 'bool':
@@ -61,9 +79,15 @@ class ValueFactory
                 return (bool) $value;
 
             case 'decimal':
+                if($value === 'inf') return ValueInterface::INFINITE;
+                if($value === '-inf') return -ValueInterface::INFINITE;
+
                 return (float) printf('%0.2f', $value);
 
             case 'float':
+                if($value === 'inf') return ValueInterface::INFINITE;
+                if($value === '-inf') return -ValueInterface::INFINITE;
+
                 return (float) $value;
 
             case 'array':
