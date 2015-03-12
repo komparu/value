@@ -82,7 +82,7 @@ class ValueFactory
                 if($value === 'inf') return ValueInterface::INFINITE;
                 if($value === '-inf') return -ValueInterface::INFINITE;
 
-                return (float) printf('%0.2f', $value);
+                return (float) sprintf('%0.2f', $value);
 
             case 'float':
                 if($value === 'inf') return ValueInterface::INFINITE;
