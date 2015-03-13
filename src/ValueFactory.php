@@ -10,6 +10,19 @@
 class ValueFactory implements ValueFactoryInterface
 {
     /**
+     * Check if the value is an infinite number.
+     *
+     * @param $value
+     * @return bool
+     */
+    protected static function isInfinite($value)
+    {
+        $value = (int) abs($value);
+
+        return floor($value, 0) === ValueInterface::INFINITE;
+    }
+
+    /**
      * Create a ValueInterface object from a mixed value.
      *
      * @param mixed $value
@@ -18,11 +31,8 @@ class ValueFactory implements ValueFactoryInterface
      */
     public static function create($value, $type = null)
     {
-        if((int) $value === ValueInterface::INFINITE) {
-            return new Infinite();
-        }
-        if((int) $value === -ValueInterface::INFINITE) {
-            return new NegativeInfinite();
+        if(static::isInfinite($value)) {
+            return ($value > 0) ? new Infinite() : new NegativeInfinite();
         }
 
         $typecasted = is_null($value) ? null : static::typecast($value, $type);
