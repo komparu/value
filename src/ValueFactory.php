@@ -17,9 +17,7 @@ class ValueFactory implements ValueFactoryInterface
      */
     protected static function isInfinite($value)
     {
-        $value = (int) abs($value);
-
-        return floor($value, 0) === ValueInterface::INFINITE;
+        return (int) abs($value) === ValueInterface::INFINITE;
     }
 
     /**

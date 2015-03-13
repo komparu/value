@@ -28,7 +28,7 @@ interface ValueInterface
      * higher than this will result in a float.
      * And that would cause strange behaviour.
      */
-    const INFINITE = 999999999;
+    const INFINITE = 99999999;
 
     /**
      * Get the value type.
