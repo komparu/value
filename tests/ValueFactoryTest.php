@@ -4,6 +4,7 @@ use Komparu\Value\ValueFactory;
 use Komparu\Value\Partial;
 use Komparu\Value\Range;
 use Komparu\Value\Operator;
+use Komparu\Value\ValueInterface;
 
 class ValueFactoryTest extends PHPUnit_Framework_TestCase
 {
@@ -28,9 +29,18 @@ class ValueFactoryTest extends PHPUnit_Framework_TestCase
             [1, 'bool', true],
             [0, 'bool', false],
             ['123', 'int', 123],
-            ['123.45', 'decimal', '123.45'],
-            ['123.45', 'float', 123.45],
+            ['123.4567', 'decimal', 123.46],
+            ['123.4512', 'decimal', 123.45],
+            ['123.4567', 'float', 123.4567],
             ['{"foo":"bar"}', 'array', ['foo' => 'bar']],
+            ['++inf', null, ValueInterface::INFINITE],
+            ['∞', null, ValueInterface::INFINITE],
+            ['+∞', null, ValueInterface::INFINITE],
+            ['&infin;', null, ValueInterface::INFINITE],
+            ['+&infin;', null, ValueInterface::INFINITE],
+            ['--inf', null, -ValueInterface::INFINITE],
+            ['-∞', null, -ValueInterface::INFINITE],
+            ['-&infin;', null, -ValueInterface::INFINITE],
         ];
     }
 }

@@ -51,7 +51,7 @@ class ValueFactory
      */
     public static function typecast($value, $type = null)
     {
-        switch($value) {
+        switch((string) $value) {
 
             // Detect a positive infinite notation
             case '++inf':
@@ -79,7 +79,7 @@ class ValueFactory
                 return (bool) $value;
 
             case 'decimal':
-                return (float) printf('%0.2f', $value);
+                return round( (float) $value, 2);
 
             case 'float':
                 return (float) $value;
