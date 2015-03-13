@@ -53,6 +53,7 @@ class ValueFactory
     {
         switch($value) {
 
+            // Detect a positive infinite notation
             case '++inf':
             case '∞':
             case '+∞':
@@ -60,18 +61,17 @@ class ValueFactory
             case '+&infin;':
                 return ValueInterface::INFINITE;
 
+            // Detect a negative infinite notation
             case '--inf':
             case '-∞':
             case '-&infin;':
                 return -ValueInterface::INFINITE;
         }
 
+        // If a type is provided, then its easy to typecast...
         switch($type) {
 
             case 'int':
-                if($value === 'inf') return ValueInterface::INFINITE;
-                if($value === '-inf') return -ValueInterface::INFINITE;
-
                 return (int) $value;
 
             case 'bool':
@@ -79,21 +79,16 @@ class ValueFactory
                 return (bool) $value;
 
             case 'decimal':
-                if($value === 'inf') return ValueInterface::INFINITE;
-                if($value === '-inf') return -ValueInterface::INFINITE;
-
-                return (float) sprintf('%0.2f', $value);
+                return (float) printf('%0.2f', $value);
 
             case 'float':
-                if($value === 'inf') return ValueInterface::INFINITE;
-                if($value === '-inf') return -ValueInterface::INFINITE;
-
                 return (float) $value;
 
             case 'array':
                 return is_string($value) ? json_decode($value, true) : $value;
         }
 
+        // Check if this number is a float or an integer.
         if (is_numeric($value)) {
             return strstr($value, '.')
                 ? (float)$value
