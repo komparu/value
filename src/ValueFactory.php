@@ -7,9 +7,11 @@
  *
  * @package Komparu\Value
  */
-class ValueFactory
+class ValueFactory implements ValueFactoryInterface
 {
     /**
+     * Create a ValueInterface object from a mixed value.
+     *
      * @param mixed $value
      * @param string $type
      * @return ValueInterface
@@ -29,6 +31,9 @@ class ValueFactory
     }
 
     /**
+     * Create an array of ValueInterface objects based on
+     * an array of mixed values.
+     *
      * @param array $values
      * @return array
      */
