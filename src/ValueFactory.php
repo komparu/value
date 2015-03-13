@@ -56,6 +56,9 @@ class ValueFactory implements ValueFactoryInterface
      */
     public static function typecast($value, $type = null)
     {
+        // Just return if type is array or object
+        if(is_array($value) || is_object($value)) return $value;
+
         switch((string) $value) {
 
             // Detect a positive infinite notation
