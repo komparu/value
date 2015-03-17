@@ -19,6 +19,6 @@ class NegativeInfinite extends Value
      */
     public function display()
     {
-        return '-inf';
+        return '-∞';
     }
 }

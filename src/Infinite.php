@@ -12,6 +12,6 @@ class Infinite extends Value
      */
     public function display()
     {
-        return 'inf';
+        return '∞';
     }
 }
