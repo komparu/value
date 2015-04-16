@@ -73,17 +73,6 @@ class ValueFactory implements ValueFactoryInterface
             return $value;
         }
 
-        switch ((string)$value) {
-
-            // Detect a positive infinite notation
-            case '∞':
-                return ValueInterface::INFINITE;
-
-            // Detect a negative infinite notation
-            case '-∞':
-                return -ValueInterface::INFINITE;
-        }
-
         // If a type is provided, then its easy to typecast...
         switch ($type) {
 
