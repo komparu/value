@@ -17,7 +17,9 @@ class ValueFactory implements ValueFactoryInterface
      */
     protected static function isInfinite($value)
     {
-        return (int) abs($value) === ValueInterface::INFINITE;
+        return false
+        or (preg_replace('/^[+-]/', '', $value) === ValueInterface::INFINITY_SYMBOL)
+        or (abs((int)$value) === ValueInterface::INFINITE);
     }
 
     /**
@@ -29,8 +31,10 @@ class ValueFactory implements ValueFactoryInterface
      */
     public static function create($value, $type = null)
     {
-        if(static::isInfinite($value)) {
-            return ($value > 0) ? new Infinite() : new NegativeInfinite();
+        if (static::isInfinite($value)) {
+            return preg_match('/^[^-]/', $value)
+                ? new Infinite()
+                : new NegativeInfinite();
         }
 
         $typecasted = is_null($value) ? null : static::typecast($value, $type);
@@ -48,7 +52,7 @@ class ValueFactory implements ValueFactoryInterface
     public static function createFromArray(Array $values)
     {
         $converted = [];
-        foreach($values as $key => $value) {
+        foreach ($values as $key => $value) {
             $converted[$key] = static::create($value);
         }
 
@@ -65,9 +69,11 @@ class ValueFactory implements ValueFactoryInterface
     public static function typecast($value, $type = null)
     {
         // Just return if type is array or object
-        if(is_array($value) || is_object($value)) return $value;
+        if (is_array($value) || is_object($value)) {
+            return $value;
+        }
 
-        switch((string) $value) {
+        switch ((string)$value) {
 
             // Detect a positive infinite notation
             case '∞':
@@ -79,20 +85,23 @@ class ValueFactory implements ValueFactoryInterface
         }
 
         // If a type is provided, then its easy to typecast...
-        switch($type) {
+        switch ($type) {
 
             case 'int':
-                return (int) $value;
+                return (int)$value;
 
             case 'bool':
-                if($value === 'false') return false;
-                return (bool) $value;
+                if ($value === 'false') {
+                    return false;
+                }
+
+                return (bool)$value;
 
             case 'decimal':
-                return round( (float) $value, 2);
+                return round((float)$value, 2);
 
             case 'float':
-                return (float) $value;
+                return (float)$value;
 
             case 'array':
                 return is_string($value) ? json_decode($value, true) : $value;
@@ -118,7 +127,7 @@ class ValueFactory implements ValueFactoryInterface
     {
         $typecasted = [];
 
-        foreach($values as $key => $value) {
+        foreach ($values as $key => $value) {
             $typecasted[$key] = is_array($value)
                 ? static::typecastArray($value)
                 : static::typecast($value);
