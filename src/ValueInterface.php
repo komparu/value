@@ -28,7 +28,7 @@ interface ValueInterface
      * higher than this will result in a float.
      * And that would cause strange behaviour.
      */
-    const INFINITE = INF;
+    const INFINITE = 999999999;
 
     /**
      * Infinity symbol uses for casting.
