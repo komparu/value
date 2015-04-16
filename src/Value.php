@@ -8,8 +8,12 @@ class Value implements ValueInterface
      */
     public function __construct($data = null, $type = null)
     {
-        $this->data = $data;
-        $this->type = $type ?: gettype($data);
+        if (!isset($this->data)) {
+            $this->data = $data;
+        }
+        if (!isset($this->type)) {
+            $this->type = $type ?: gettype($data);
+        }
     }
 
     /**
