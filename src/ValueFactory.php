@@ -17,9 +17,12 @@ class ValueFactory implements ValueFactoryInterface
      */
     protected static function isInfinite($value)
     {
-        return false
-        or (preg_replace('/^[+-]/', '', $value) === ValueInterface::INFINITY_SYMBOL)
-        or (abs((int)$value) === ValueInterface::INFINITE);
+        return true
+        and !is_array($value)
+        and (false
+            or (preg_replace('/^[+-]/', '', $value) === ValueInterface::INFINITY_SYMBOL)
+            or (abs((int)$value) === ValueInterface::INFINITE)
+        );
     }
 
     /**
