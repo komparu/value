@@ -90,7 +90,7 @@ class ValueFactory implements ValueFactoryInterface
                 return (bool)$value;
 
             case 'decimal':
-                return round((float)$value, 2);
+                return round((float)$value, 4);
 
             case 'float':
                 return (float)$value;
