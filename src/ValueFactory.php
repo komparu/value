@@ -95,6 +95,7 @@ class ValueFactory implements ValueFactoryInterface
             case 'float':
                 return (float)$value;
 
+            case 'object':
             case 'array':
                 return is_string($value) ? json_decode($value, true) : $value;
         }
