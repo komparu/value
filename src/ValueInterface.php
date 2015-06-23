@@ -3,6 +3,7 @@
 interface ValueInterface
 {
     /**
+     * (added shortstring)
      * List of available types.
      * These are the basic types a value can have.
      */
