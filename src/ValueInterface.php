@@ -7,6 +7,7 @@ interface ValueInterface
      * These are the basic types a value can have.
      */
     const TYPE_STRING       = 'string';
+    const TYPE_SHORTSTRING  = 'shortstring';
     const TYPE_TEXT         = 'text';
     const TYPE_INTEGER      = 'int';
     const TYPE_BOOLEAN      = 'bool';
