@@ -76,6 +76,21 @@ class ValueFactory implements ValueFactoryInterface
             return $value;
         }
 
+        // this block is necessary when inserting
+        // I once removed it then everything seemed to be working
+        // but insert didn't work, so please don't remove it
+        // find another way to fix your problem
+        //
+        // This is more like message to myself
+        switch ((string) $value) {
+            // Detect a positive infinite notation
+            case '∞':
+                return ValueInterface::INFINITE;
+            // Detect a negative infinite notation
+            case '-∞':
+                return - ValueInterface::INFINITE;
+        }
+
         // If a type is provided, then its easy to typecast...
         switch ($type) {
 
