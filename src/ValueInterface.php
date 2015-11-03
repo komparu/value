@@ -38,6 +38,11 @@ interface ValueInterface
     const INFINITY_SYMBOL = '∞';
 
     /**
+     * Use magic constant null, for having possibility to set a field to null in MySql.
+     */
+    const NULL = 'null';
+
+    /**
      * Get the value type.
      *
      * @return string
