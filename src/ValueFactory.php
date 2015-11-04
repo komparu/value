@@ -40,7 +40,7 @@ class ValueFactory implements ValueFactoryInterface
                 : new NegativeInfinite();
         }
 
-        $typecasted = is_null($value) ? null : static::typecast($value, $type);
+        $typecasted = (is_null($value) || $value == ValueInterface::NULL) ? null : static::typecast($value, $type);
 
         return new Value($typecasted, $type);
     }
