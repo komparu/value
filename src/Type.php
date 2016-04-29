@@ -10,6 +10,7 @@ namespace Komparu\Value;
 
 class Type
 {
+    const DATATYPE = 'DataType';
     const STRING = 'String';
     const SHORTSTRING = 'Shortstring';
     const TEXT = 'Text';
