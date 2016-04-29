@@ -16,7 +16,7 @@ class Type
     const TEXT = 'Text';
     const NUMBER = 'Number';
     const BOOLEAN = 'Boolean';
-    const INT = 'Integer';
+    const INTEGER = 'Integer';
     const DECIMAL = 'Decimal';
     const FLOAT = 'Float';
     const ARR = 'Array';
