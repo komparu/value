@@ -25,6 +25,7 @@ class Type
 
     const DATE = 'Date'; //yyyy-mm-dd
     const POSTALCODE = 'Postalcode'; //9999AA
+    const POSTALCODECH = 'Postalcodech'; //9999AA
     const IBAN = 'Iban';
     const BSN = 'Bsn';
     const PHONENUMBER = 'Phonenumber';
@@ -56,6 +57,13 @@ class Type
     const  ICONSEQUENCE = 'IconSequence';
     const  RATING = 'Rating';
     const  UNLIMITED = 'Unlimited';
+
+    //
+    const  CHOICE = 'Choice';
+    const  SCHEMA = 'Schema';
+
+
+
 
     // Give context to a data types
     const  PERCENTAGE = 'Percentage';
