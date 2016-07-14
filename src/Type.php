@@ -74,4 +74,5 @@ class Type
     const  TRANSSTRING = 'TransString';
     const  TRANSLATABLE = 'Translatable';
     const  LICENSEPLATE = 'Licenseplate';
+    const  SECURITY = 'Security';
 }
