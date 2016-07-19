@@ -74,6 +74,7 @@ class Type
     const  TRANSSTRING = 'TransString';
     const  TRANSLATABLE = 'Translatable';
     const  LICENSEPLATE = 'Licenseplate';
+    const  SECURITY = 'Security';
     //base64 image
 
     const  BASE64 = 'base64';
