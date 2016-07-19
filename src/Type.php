@@ -74,4 +74,8 @@ class Type
     const  TRANSSTRING = 'TransString';
     const  TRANSLATABLE = 'Translatable';
     const  LICENSEPLATE = 'Licenseplate';
+    //base64 image
+
+    const  BASE64 = 'base64';
+
 }
