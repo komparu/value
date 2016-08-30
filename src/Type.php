@@ -31,6 +31,7 @@ class Type
     const PHONENUMBER = 'Phonenumber';
     const EMAIL = 'Email';
     const CARREPORTINGCODE = 'CarReportingCode';
+    const SMSTOKENREQUESTER = 'SmsTokenRequester';
 
     const  REFERENCE = 'Reference';
     const  HIDDEN = 'Hidden';
