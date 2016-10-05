@@ -26,6 +26,7 @@ class Type
     const DATE = 'Date'; //yyyy-mm-dd
     const POSTALCODE = 'Postalcode'; //9999AA
     const POSTALCODECH = 'Postalcodech'; //9999AA
+    const INITIALS = 'Initials';
     const IBAN = 'Iban';
     const BSN = 'Bsn';
     const PHONENUMBER = 'Phonenumber';
