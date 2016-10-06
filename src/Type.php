@@ -27,6 +27,7 @@ class Type
     const POSTALCODE = 'Postalcode'; //9999AA
     const POSTALCODECH = 'Postalcodech'; //9999AA
     const INITIALS = 'Initials';
+    const KVKNUMBER = 'KvkNumber';
     const IBAN = 'Iban';
     const BSN = 'Bsn';
     const PHONENUMBER = 'Phonenumber';
