@@ -24,6 +24,7 @@ class Type
     const DATESTRING = 'DateString';
 
     const DATE = 'Date'; //yyyy-mm-dd
+    const DATETIME = 'DateTime'; //yyyy-mm-dd HH:ii:ss
     const POSTALCODE = 'Postalcode'; //9999AA
     const POSTALCODECH = 'Postalcodech'; //9999AA
     const INITIALS = 'Initials';
