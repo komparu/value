@@ -49,6 +49,7 @@ class Type
     const  URL = 'Url';
     const  DESCRIPTION = 'Description';
     const  IMAGE = 'Image';
+    const  CAROUSEL = 'Carousel';
     const  COLOR = 'Color';
     const  FONT = 'Font';
     const  PRICE = 'Price';
