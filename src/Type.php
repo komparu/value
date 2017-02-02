@@ -32,6 +32,7 @@ class Type
     const IBAN = 'Iban';
     const BSN = 'Bsn';
     const PHONENUMBER = 'Phonenumber';
+    const PHONENUMBERINT = 'Phonenumberint';
     const EMAIL = 'Email';
     const CARREPORTINGCODE = 'CarReportingCode';
     const SMSTOKENREQUESTER = 'SmsTokenRequester';
