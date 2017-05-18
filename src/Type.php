@@ -22,7 +22,7 @@ class Type
     const ARR = 'Array';
     const OBJECT = 'Object';
     const DATESTRING = 'DateString';
-    const TYPE = 'Blob';
+    const BLOB = 'Blob';
 
     const DATE = 'Date'; //yyyy-mm-dd
     const DATETIME = 'DateTime'; //yyyy-mm-dd HH:ii:ss
