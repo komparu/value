@@ -18,6 +18,7 @@ interface ValueInterface
     const TYPE_ARRAY        = 'array';
     const TYPE_DATE         = 'date';
     const TYPE_DATETIME     = 'datetime';
+    const TYPE_BLOB         = 'blob';
     const TYPE_CREATED_AT   = 'created_at';
     const TYPE_UPDATED_AT   = 'updated_at';
 
