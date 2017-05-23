@@ -22,6 +22,7 @@ class Type
     const ARR = 'Array';
     const OBJECT = 'Object';
     const DATESTRING = 'DateString';
+    const BLOB = 'Blob';
 
     const DATE = 'Date'; //yyyy-mm-dd
     const DATETIME = 'DateTime'; //yyyy-mm-dd HH:ii:ss
@@ -32,6 +33,7 @@ class Type
     const IBAN = 'Iban';
     const BSN = 'Bsn';
     const PHONENUMBER = 'Phonenumber';
+    const PHONENUMBERINT = 'Phonenumberint';
     const EMAIL = 'Email';
     const CARREPORTINGCODE = 'CarReportingCode';
     const SMSTOKENREQUESTER = 'SmsTokenRequester';
@@ -49,6 +51,7 @@ class Type
     const  URL = 'Url';
     const  DESCRIPTION = 'Description';
     const  IMAGE = 'Image';
+    const  CAROUSEL = 'Carousel';
     const  COLOR = 'Color';
     const  FONT = 'Font';
     const  PRICE = 'Price';
