@@ -50,6 +50,7 @@ class Type
     const  SUBHEADING = 'SubHeading';
     const  URL = 'Url';
     const  DESCRIPTION = 'Description';
+    const  FILE = 'File';
     const  IMAGE = 'Image';
     const  CAROUSEL = 'Carousel';
     const  COLOR = 'Color';
