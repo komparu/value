@@ -39,6 +39,11 @@ interface ValueInterface
     const INFINITY_SYMBOL = '∞';
 
     /**
+     * Complete fallback value.
+     */
+    const FALLBACK = -271828182; // a part of e constant for the sake of science
+
+    /**
      * Use magic constant null, for having possibility to set a field to null in MySql.
      */
     const NULL = 'null';
